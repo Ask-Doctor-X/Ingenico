@@ -23,7 +23,7 @@ import com.UserDocumentOperationsApp.constants.UDOAConstants;
 
 @Path(UDOAConstants.BASEPATH)
 public class FileOperationsService {
-	public static final String FILE_PATH = "d://uploaded/";
+	public static final String FILE_PATH = "C://Ingenico/Uploaded";
 	public static Map<String, Integer> data = new HashMap<String, Integer>();
 
 	@GET
@@ -99,7 +99,7 @@ public class FileOperationsService {
 			
 			deleteMyFile(fileName);
 			response = Response.status(200).
-		              entity("File will be deleted soon from :" + FILE_PATH).
+		              entity("File "+fileName+" been from :" + FILE_PATH).
 		              type("text/plain").
 		              build();
 			 

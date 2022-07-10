@@ -21,7 +21,7 @@ import org.junit.Test;
 import com.UserDocumentOperationsApp.exceptions.UDOPException;
 
 public class ApplicationTest {
-	public static final String fileLocation = "C://JUnitTest/test.txt";
+	public static final String fileLocation = "C://Ingenico/Uploaded/test.txt";
 	public String userIdForTest = "101";
 	
 	@Test
@@ -70,6 +70,7 @@ public class ApplicationTest {
 			throw new UDOPException(e.getMessage());
 		}
 		StatusLine status = response.getStatusLine();
+		//System.out.println("Response : "+status.getStatusCode());
 		
 		assertEquals("Checking API status code : ", status.getStatusCode(), 200);
 	}
