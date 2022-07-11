@@ -94,12 +94,16 @@ public class FileOperationsService {
 	public Response deleteFile(@PathParam("filename") String fileName) throws UDOPException, InterruptedException {
 		Response response = null;
 		
-		Thread.sleep(120000);
+		try{
+			Thread.sleep(120000);
+		}catch(InterruptedException e){
+			throw new UDOPException(e.getMessage());
+		}
 		if(findMyFile(fileName)) {
 			
 			deleteMyFile(fileName);
 			response = Response.status(200).
-		              entity("File "+fileName+" been from :" + FILE_PATH).
+		              entity("File "+fileName+" has been deleted from :" + FILE_PATH).
 		              type("text/plain").
 		              build();
 			 
@@ -116,7 +120,7 @@ public class FileOperationsService {
 
 
 	private void writeToFile(InputStream uploadedInputStream,
-		String uploadedFileLocation) throws IOException {
+		String uploadedFileLocation) throws UDOPException {
 		OutputStream out = new FileOutputStream(new File(
 				uploadedFileLocation));
 		try {
@@ -128,8 +132,7 @@ public class FileOperationsService {
 				out.write(bytes, 0, read);
 			}
 		} catch (IOException e) {
-
-			e.printStackTrace();
+			throw new UDOPException(e.getMessage());
 		}finally {
 			out.flush();
 			out.close();
@@ -146,7 +149,7 @@ public class FileOperationsService {
 		    	if(fileName.equalsIgnoreCase(child.getName())) {
 		    		fileExists = true;
 		    		break;
-		    		}// Do something with child
+		    		}
 		    	}
 		  } else {
 			  throw new UDOPException("File does not exists");
