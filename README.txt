@@ -42,7 +42,7 @@ Functions :
 			Path variable : Filename (Hint : You can get the file name after you upload the document). 
 			
 			Request Eg : GET http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/delete/27_code.docx
-			Response Eg: File 27_code.docx been from : C://Ingenico/Uploaded
+			Response Eg: File 27_code.docx has been deleted from : C://Ingenico/Uploaded
 			
 			
 			
