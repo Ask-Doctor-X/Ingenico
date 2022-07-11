@@ -91,7 +91,7 @@ public class FileOperationsService {
 	
 	@GET
 	@Path(UDOAConstants.DELETE_DOCUMENT)
-	public Response deleteFile(@PathParam("filename") String fileName) throws UDOPException, InterruptedException {
+	public Response deleteFile(@PathParam("filename") String fileName) throws UDOPException{
 		Response response = null;
 		
 		try{
