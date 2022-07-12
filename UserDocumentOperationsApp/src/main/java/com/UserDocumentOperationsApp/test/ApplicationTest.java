@@ -44,7 +44,7 @@ public class ApplicationTest {
 		
 		HttpResponse response;
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpPost uploadFile = new HttpPost("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/upload");
+		HttpPost uploadURL = new HttpPost("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/upload");
 		StringBody userId = new StringBody(userIdForTest, ContentType.TEXT_PLAIN);
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 
@@ -61,9 +61,9 @@ public class ApplicationTest {
 			throw new UDOPException(e.getMessage());
 		}
 		builder.addPart("userId", userId);
-		uploadFile.setEntity(builder.build());
+		uploadURL.setEntity(builder.build());
 		try {
-			response = httpClient.execute(uploadFile);
+			response = httpClient.execute(uploadURL);
 		} catch (ClientProtocolException e) {
 			throw new UDOPException(e.getMessage());
 		} catch (IOException e) {
@@ -78,10 +78,10 @@ public class ApplicationTest {
 	@Test
 	public void downloadTest() throws UDOPException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet downloadFile = new HttpGet("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/retrieve/"+userIdForTest+"_test.txt");
+		HttpGet downloadURL = new HttpGet("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/retrieve/"+userIdForTest+"_test.txt");
 		HttpResponse response = null;
 		try {
-			response = httpClient.execute(downloadFile);
+			response = httpClient.execute(downloadURL);
 		} catch (IOException e) {
 			throw new UDOPException(e.getMessage());
 		}
@@ -93,10 +93,10 @@ public class ApplicationTest {
 	@Test
 	public void deleteTest() throws UDOPException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet downloadFile = new HttpGet("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/delete/"+userIdForTest+"_test.txt");
+		HttpGet deleteURL = new HttpGet("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/document/delete/"+userIdForTest+"_test.txt");
 		HttpResponse response;
 		try {
-			response = httpClient.execute(downloadFile);
+			response = httpClient.execute(deleteURL);
 		} catch (IOException e) {
 			throw new UDOPException(e.getMessage());
 		}
