@@ -48,7 +48,7 @@ public class ApplicationTest {
 		StringBody userId = new StringBody(userIdForTest, ContentType.TEXT_PLAIN);
 		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 
-		// This attaches the file to the POST:
+		
 		File file = new File(fileLocation);
 		try {
 			builder.addBinaryBody(
@@ -70,7 +70,7 @@ public class ApplicationTest {
 			throw new UDOPException(e.getMessage());
 		}
 		StatusLine status = response.getStatusLine();
-		//System.out.println("Response : "+status.getStatusCode());
+		
 		
 		assertEquals("Checking API status code : ", status.getStatusCode(), 200);
 	}
