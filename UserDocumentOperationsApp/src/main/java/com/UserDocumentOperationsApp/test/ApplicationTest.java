@@ -27,10 +27,10 @@ public class ApplicationTest {
 	@Test
 	public void createProfileTest() throws UDOPException {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-		HttpGet downloadFile = new HttpGet("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/profile");
+		HttpGet createProfileURL = new HttpGet("http://localhost:8080/UserDocumentOperationsApp/rest/v1/operations/profile");
 		HttpResponse response = null;
 		try {
-			response = httpClient.execute(downloadFile);
+			response = httpClient.execute(createProfileURL);
 		} catch (IOException e) {
 			throw new UDOPException(e.getMessage());
 		}
